@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52348785295ADD9D004937F4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52348784295ADD9D004937F4 /* main.swift */; };
+		523487B5295AF7C5004937F4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523487B4295AF7C5004937F4 /* main.swift */; };
+		523487B6295AF7E8004937F4 /* TGAImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234878B295AE67F004937F4 /* TGAImage.swift */; };
+		523487B8295AF7F7004937F4 /* diablo3_pose_diffuse.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5234878E295AEB3F004937F4 /* diablo3_pose_diffuse.tga */; };
+		523487B9295AF7F7004937F4 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52348794295AF286004937F4 /* info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5234877F295ADD9D004937F4 /* CopyFiles */ = {
+		523487AB295AF71B004937F4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		52348781295ADD9D004937F4 /* swiftrenderer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = swiftrenderer; sourceTree = BUILT_PRODUCTS_DIR; };
-		52348784295ADD9D004937F4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5234878B295AE67F004937F4 /* TGAImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGAImage.swift; sourceTree = "<group>"; };
+		5234878E295AEB3F004937F4 /* diablo3_pose_diffuse.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = diablo3_pose_diffuse.tga; sourceTree = "<group>"; };
+		52348794295AF286004937F4 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		523487AD295AF71B004937F4 /* swiftrenderer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = swiftrenderer; sourceTree = BUILT_PRODUCTS_DIR; };
+		523487B4295AF7C5004937F4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5234877E295ADD9D004937F4 /* Frameworks */ = {
+		523487AA295AF71B004937F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -49,7 +55,7 @@
 		52348782295ADD9D004937F4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				52348781295ADD9D004937F4 /* swiftrenderer */,
+				523487AD295AF71B004937F4 /* swiftrenderer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,21 +63,33 @@
 		52348783295ADD9D004937F4 /* swiftrenderer */ = {
 			isa = PBXGroup;
 			children = (
-				52348784295ADD9D004937F4 /* main.swift */,
+				5234878D295AEB2F004937F4 /* resources */,
+				523487B4295AF7C5004937F4 /* main.swift */,
+				5234878B295AE67F004937F4 /* TGAImage.swift */,
+				52348794295AF286004937F4 /* info.plist */,
 			);
 			path = swiftrenderer;
+			sourceTree = "<group>";
+		};
+		5234878D295AEB2F004937F4 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				5234878E295AEB3F004937F4 /* diablo3_pose_diffuse.tga */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		52348780295ADD9D004937F4 /* swiftrenderer */ = {
+		523487AC295AF71B004937F4 /* swiftrenderer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52348788295ADD9D004937F4 /* Build configuration list for PBXNativeTarget "swiftrenderer" */;
+			buildConfigurationList = 523487B1295AF71B004937F4 /* Build configuration list for PBXNativeTarget "swiftrenderer" */;
 			buildPhases = (
-				5234877D295ADD9D004937F4 /* Sources */,
-				5234877E295ADD9D004937F4 /* Frameworks */,
-				5234877F295ADD9D004937F4 /* CopyFiles */,
+				523487A9295AF71B004937F4 /* Sources */,
+				523487AA295AF71B004937F4 /* Frameworks */,
+				523487AB295AF71B004937F4 /* CopyFiles */,
+				523487B7295AF7F1004937F4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -79,7 +97,7 @@
 			);
 			name = swiftrenderer;
 			productName = swiftrenderer;
-			productReference = 52348781295ADD9D004937F4 /* swiftrenderer */;
+			productReference = 523487AD295AF71B004937F4 /* swiftrenderer */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -92,8 +110,9 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
-					52348780295ADD9D004937F4 = {
+					523487AC295AF71B004937F4 = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -110,17 +129,30 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				52348780295ADD9D004937F4 /* swiftrenderer */,
+				523487AC295AF71B004937F4 /* swiftrenderer */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		523487B7295AF7F1004937F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				523487B8295AF7F7004937F4 /* diablo3_pose_diffuse.tga in Resources */,
+				523487B9295AF7F7004937F4 /* info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		5234877D295ADD9D004937F4 /* Sources */ = {
+		523487A9295AF71B004937F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52348785295ADD9D004937F4 /* main.swift in Sources */,
+				523487B6295AF7E8004937F4 /* TGAImage.swift in Sources */,
+				523487B5295AF7C5004937F4 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,19 +272,32 @@
 			};
 			name = Release;
 		};
-		52348789295ADD9D004937F4 /* Debug */ = {
+		523487B2295AF71B004937F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		5234878A295ADD9D004937F4 /* Release */ = {
+		523487B3295AF71B004937F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -270,11 +315,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52348788295ADD9D004937F4 /* Build configuration list for PBXNativeTarget "swiftrenderer" */ = {
+		523487B1295AF71B004937F4 /* Build configuration list for PBXNativeTarget "swiftrenderer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				52348789295ADD9D004937F4 /* Debug */,
-				5234878A295ADD9D004937F4 /* Release */,
+				523487B2295AF71B004937F4 /* Debug */,
+				523487B3295AF71B004937F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

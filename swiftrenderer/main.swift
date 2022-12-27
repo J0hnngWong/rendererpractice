@@ -7,5 +7,14 @@
 
 import Foundation
 
-print("Hello, World!")
+func goRender() {
+//    let filePath = "/Users/john/Project/Personal/swiftrenderer/swiftrenderer/resources/diablo3_pose_diffuse.tga"
+//    let image = TGAImage.load(filePath: filePath)
+//    print(image)
+    let color = TGARGBColor(r: 255, g: 255, b: 255, a: 255)
+    let image = TGAImage(width: 100, height: 100, colorFormat: .rgba)
+    image.set(x: 10, y: 10, color: color)
+    image.write(filePath: "/Users/john/Project/Personal/swiftrenderer/swiftrenderer/resources/output/test.tga")
+}
 
+goRender()
