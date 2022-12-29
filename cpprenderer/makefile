@@ -1,7 +1,7 @@
 # https://seisman.github.io/how-to-write-makefile/introduction.html
 # -Wall display all warining
 
-cpprendererapp: ./cpprenderer/TGAImage.cpp ./cpprenderer/main.cpp
+cpprendererapp: ./cpprenderer/TGAImage.cpp ./cpprenderer/TGAImage.h ./cpprenderer/main.cpp
 	g++ -o cpprendererapp ./cpprenderer/TGAImage.cpp ./cpprenderer/main.cpp
 
 # main.o: ./cpprenderer/main.cpp #./cpprenderer/TGAImage.h

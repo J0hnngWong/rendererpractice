@@ -10,6 +10,8 @@
 
 // Reference: https://en.wikipedia.org/wiki/Truevision_TGA
 
+// 可以规划各个属性的储存位置来保证对齐
+
 #pragma pack(push, 1)
 struct TGAImageHeader {
     char id_length;
@@ -43,12 +45,20 @@ struct TGAImageHeader {
 };
 #pragma pack(pop)
 
-//struct SizeTest
-//{
-//    short width;
-//    char idarea;
-//};
-
+// difference between those two structs
+/* struct SizeTest
+{
+    char idarea1;
+    short width1;
+    char idarea2;
+};
+struct SizeTest
+{
+    char idarea1;
+    char idarea2;
+    short width1;
+};
+*/
 
 struct TGAImageFooter {
     unsigned char developer_area_ref[4];
