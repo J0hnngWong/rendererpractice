@@ -67,7 +67,17 @@ struct TGAImageFooter {
 };
 
 struct TGAColor {
-
+    union {
+        struct {
+            unsigned char b, g, r, a;
+        };
+        unsigned char raw[4];
+        unsigned int val;
+    };
+    int color_format;
+    
+    TGAColor(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) : b(blue), g(green), r(red), a(alpha) {
+    }
 };
 
 class TGAImage {
@@ -86,7 +96,7 @@ public:
 
     TGAImage(int canvas_width, int canvas_height, int color_format);
     ~TGAImage();
-    void set(int origin_x, int origin_y, TGAColor color);
+    bool set(int origin_x, int origin_y, TGAColor color);
     bool write_tga_file(const char *file_name, bool run_length_encode);
 };
 

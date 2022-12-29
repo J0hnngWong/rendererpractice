@@ -24,8 +24,12 @@ TGAImage::~TGAImage() {
 
 }
 
-void TGAImage::set(int origin_x, int origin_y, TGAColor color) {
-
+bool TGAImage::set(int origin_x, int origin_y, TGAColor color) {
+    if (!canvas_data || origin_x < 0 || origin_x > canvas_width || origin_y < 0 || origin_y > canvas_height) {
+        return false;
+    }
+    memcpy(canvas_data + (origin_y * canvas_width + origin_x) * color_format, color.raw, color_format);
+    return true;
 }
 
 bool TGAImage::write_tga_file(const char *file_name, bool run_length_encode) {
