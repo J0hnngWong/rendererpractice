@@ -12,7 +12,7 @@
 
 // Reference: https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 // points: (x - x0)/(y - y0) = (x1 - x0)/(y1 - y0)
-void draw_line(int start_x, int start_y, int end_x, int end_y, TGAImage image, TGAColor color) {
+void draw_line(int start_x, int start_y, int end_x, int end_y, TGAImage &image, TGAColor color) {
     float x0 = start_x, x1 = end_x, y0 = start_y, y1 = end_y;
     bool steep = abs(end_y - start_y) > abs(end_x - start_x);
     if (steep) {
@@ -26,13 +26,12 @@ void draw_line(int start_x, int start_y, int end_x, int end_y, TGAImage image, T
         int tempx = x0;
         x0 = x1;
         x1 = tempx;
-        
+
         int tempy = y0;
         y0 = y1;
         y1 = tempy;
     }
     float tangent = (abs(y1 - y0)/(x1 - x0));
-    std::cout<<"tangent: "<<tangent<<"\n";
     // 已变换为x1一定大于x0并且x长度一定大于y的线段
     // y = tanø * x
     // y = tanø * (x + 1)

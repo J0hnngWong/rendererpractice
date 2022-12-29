@@ -1,8 +1,17 @@
 # https://seisman.github.io/how-to-write-makefile/introduction.html
 # -Wall display all warining
 
-cpprendererapp: ./cpprenderer/TGAImage.cpp ./cpprenderer/TGAImage.h ./cpprenderer/main.cpp
-	g++ -o cpprendererapp ./cpprenderer/TGAImage.cpp ./cpprenderer/main.cpp
+ALL_FILE = ./cpprenderer/TGAImage.cpp ./cpprenderer/TGAImage.h ./cpprenderer/main.cpp
+
+OBJECTS = ./cpprenderer/TGAImage.cpp ./cpprenderer/main.cpp
+
+all : cpprendererapp
+
+cpprendererapp : $(ALL_FILE)
+	g++ -o cpprendererapp $(OBJECTS)
+
+debugcompile : $(ALL_FILE)
+	g++ -ggdb -g -pg -o cpprendererapp $(OBJECTS)
 
 # main.o: ./cpprenderer/main.cpp #./cpprenderer/TGAImage.h
 # 	g++ -c ./cpprenderer/main.cpp
@@ -16,4 +25,4 @@ cpprendererapp: ./cpprenderer/TGAImage.cpp ./cpprenderer/TGAImage.h ./cpprendere
 clean:
 	-rm cpprendererapp
 
-.PHONY: clean
+.PHONY: clean debugcompile
