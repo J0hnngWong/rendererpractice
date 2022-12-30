@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		52223008295D395D00649795 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52223007295D395D00649795 /* main.cpp */; };
 		5222300A295D39B700649795 /* TGAImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52223009295D39B700649795 /* TGAImage.cpp */; };
+		52AC23F8295EBA68001F8C73 /* ObjectModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52AC23F6295EBA68001F8C73 /* ObjectModel.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,9 @@
 		52223004295C497B00649795 /* TGAImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGAImage.h; sourceTree = "<group>"; };
 		52223007295D395D00649795 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		52223009295D39B700649795 /* TGAImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TGAImage.cpp; sourceTree = "<group>"; };
+		52AC23F6295EBA68001F8C73 /* ObjectModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectModel.cpp; sourceTree = "<group>"; };
+		52AC23F7295EBA68001F8C73 /* ObjectModel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ObjectModel.hpp; sourceTree = "<group>"; };
+		52AC23F9295EC0ED001F8C73 /* geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,9 @@
 				52223007295D395D00649795 /* main.cpp */,
 				52223004295C497B00649795 /* TGAImage.h */,
 				52223009295D39B700649795 /* TGAImage.cpp */,
+				52AC23F6295EBA68001F8C73 /* ObjectModel.cpp */,
+				52AC23F9295EC0ED001F8C73 /* geometry.h */,
+				52AC23F7295EBA68001F8C73 /* ObjectModel.hpp */,
 			);
 			path = cpprenderer;
 			sourceTree = "<group>";
@@ -125,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5222300A295D39B700649795 /* TGAImage.cpp in Sources */,
+				52AC23F8295EBA68001F8C73 /* ObjectModel.cpp in Sources */,
 				52223008295D395D00649795 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -54,10 +54,16 @@ void draw_line(int start_x, int start_y, int end_x, int end_y, TGAImage &image, 
     }
 }
 
+void cpp_feature_test() {
+    
+}
+
 int main(int argc, char** argv) {
     TGAImage image(100, 100, TGAImage::ColorFormat::RGB);
     TGAColor white_color(255, 255, 255, 255);
 //    draw_line(10, 10, 90, 20, image, white_color);
     draw_line(10, 10, 20, 90, image, white_color);
     image.write_tga_file("test.tga", false);
+    cpp_feature_test();
+    return 0;
 }
