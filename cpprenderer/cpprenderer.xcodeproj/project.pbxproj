@@ -30,8 +30,9 @@
 		52223007295D395D00649795 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		52223009295D39B700649795 /* TGAImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TGAImage.cpp; sourceTree = "<group>"; };
 		52AC23F6295EBA68001F8C73 /* ObjectModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectModel.cpp; sourceTree = "<group>"; };
-		52AC23F7295EBA68001F8C73 /* ObjectModel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ObjectModel.hpp; sourceTree = "<group>"; };
 		52AC23F9295EC0ED001F8C73 /* geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
+		52AC23FA296426A2001F8C73 /* ObjectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectModel.h; sourceTree = "<group>"; };
+		52AC23FD29651FB1001F8C73 /* african_head.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = african_head.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,14 +65,23 @@
 		52222FF4295C483600649795 /* cpprenderer */ = {
 			isa = PBXGroup;
 			children = (
+				52AC23FC29651F8B001F8C73 /* resources */,
 				52223007295D395D00649795 /* main.cpp */,
 				52223004295C497B00649795 /* TGAImage.h */,
 				52223009295D39B700649795 /* TGAImage.cpp */,
 				52AC23F6295EBA68001F8C73 /* ObjectModel.cpp */,
 				52AC23F9295EC0ED001F8C73 /* geometry.h */,
-				52AC23F7295EBA68001F8C73 /* ObjectModel.hpp */,
+				52AC23FA296426A2001F8C73 /* ObjectModel.h */,
 			);
 			path = cpprenderer;
+			sourceTree = "<group>";
+		};
+		52AC23FC29651F8B001F8C73 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				52AC23FD29651FB1001F8C73 /* african_head.obj */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

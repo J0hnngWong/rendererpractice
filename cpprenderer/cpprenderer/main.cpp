@@ -8,7 +8,15 @@
 #include <stdio.h>
 #include <math.h>
 #include <iostream>
+#include <sstream>
+#include <fstream>
+#include <string>
 #include "TGAImage.h"
+#include "ObjectModel.h"
+
+ObjectModel *model = NULL;
+const int canvas_width = 800;
+const int canvas_height = 800;
 
 // Reference: https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 // points: (x - x0)/(y - y0) = (x1 - x0)/(y1 - y0)
@@ -55,15 +63,34 @@ void draw_line(int start_x, int start_y, int end_x, int end_y, TGAImage &image, 
 }
 
 void cpp_feature_test() {
-    
 }
 
 int main(int argc, char** argv) {
-    TGAImage image(100, 100, TGAImage::ColorFormat::RGB);
+    cpp_feature_test();
+
+    if (argc == 2) {
+        model = new ObjectModel(argv[1]);
+    } else {
+        model = new ObjectModel("cpprenderer/resources/african_head.obj");
+    }
+    TGAImage image(canvas_width, canvas_height, TGAImage::ColorFormat::RGB);
     TGAColor white_color(255, 255, 255, 255);
 //    draw_line(10, 10, 90, 20, image, white_color);
-    draw_line(10, 10, 20, 90, image, white_color);
+//    draw_line(10, 10, 20, 90, image, white_color);
+    for (int face_index = 0; face_index < model->faces_count(); face_index++) {
+        std::vector<int> face_list = model->face(face_index);
+        for (int line_index = 0; line_index < 3; line_index++) {
+            int vertex_index0 = face_list[line_index];
+            int vertex_index1 = face_list[(line_index + 1)%3];
+            VectorFloat3 vertex0 = model->vertex(vertex_index0);
+            VectorFloat3 vertex1 = model->vertex(vertex_index1);
+            int x0 = (vertex0.x + 1) * canvas_width / 2.;
+            int y0 = (vertex0.y + 1) * canvas_height / 2.;
+            int x1 = (vertex1.x + 1) * canvas_width / 2.;
+            int y1 = (vertex1.y + 1) * canvas_height / 2.;
+            draw_line(x0, y0, x1, y1, image, white_color);
+        }
+    }
     image.write_tga_file("test.tga", false);
-    cpp_feature_test();
     return 0;
 }

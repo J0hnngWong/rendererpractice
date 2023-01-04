@@ -1,9 +1,9 @@
 # https://seisman.github.io/how-to-write-makefile/introduction.html
 # -Wall display all warining
 
-ALL_FILE = ./cpprenderer/TGAImage.cpp ./cpprenderer/TGAImage.h ./cpprenderer/main.cpp
+ALL_FILE = ./cpprenderer/TGAImage.cpp ./cpprenderer/TGAImage.h ./cpprenderer/main.cpp ./cpprenderer/ObjectModel.cpp ./cpprenderer/ObjectModel.h
 
-OBJECTS = ./cpprenderer/TGAImage.cpp ./cpprenderer/main.cpp
+OBJECTS = ./cpprenderer/TGAImage.cpp ./cpprenderer/main.cpp ./cpprenderer/ObjectModel.cpp
 
 all : cpprendererapp
 
