@@ -76,7 +76,15 @@ struct TGAColor {
     };
     int color_format;
     
+    TGAColor() : val(0), color_format(1) { }
+    
     TGAColor(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) : b(blue), g(green), r(red), a(alpha) {
+    }
+    
+    TGAColor(const unsigned char *p, int _color_format) : val(0), color_format(_color_format) {
+        for (int i = 0; i < color_format; i++) {
+            raw[i] = p[i];
+        }
     }
 };
 
@@ -96,8 +104,13 @@ public:
 
     TGAImage(int canvas_width, int canvas_height, int color_format);
     ~TGAImage();
+    
     bool set(int origin_x, int origin_y, TGAColor color);
     bool write_tga_file(const char *file_name, bool run_length_encode);
+    
+    bool flip_horizontally();
+    bool flip_vertically();
+    TGAColor color(int x, int y);
 };
 
 #endif /* TGAImage_h */

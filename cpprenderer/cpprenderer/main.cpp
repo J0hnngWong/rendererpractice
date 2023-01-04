@@ -91,6 +91,7 @@ int main(int argc, char** argv) {
             draw_line(x0, y0, x1, y1, image, white_color);
         }
     }
+    image.flip_vertically();
     image.write_tga_file("test.tga", false);
     return 0;
 }
