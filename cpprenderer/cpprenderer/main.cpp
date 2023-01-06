@@ -15,8 +15,18 @@
 #include "ObjectModel.h"
 
 ObjectModel *model = NULL;
-const int canvas_width = 800;
-const int canvas_height = 800;
+TGAColor white_color(255, 255, 255, 255);
+TGAColor red_color(255, 0, 0, 255);
+TGAColor green_color(0, 255, 0, 255);
+TGAColor blue_color(0, 0, 255, 255);
+
+// Lesson 1
+//const int canvas_width = 800;
+//const int canvas_height = 800;
+
+// Lesson 2
+const int canvas_width = 200;
+const int canvas_height = 200;
 
 // Reference: https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 // points: (x - x0)/(y - y0) = (x1 - x0)/(y1 - y0)
@@ -62,19 +72,58 @@ void draw_line(int start_x, int start_y, int end_x, int end_y, TGAImage &image, 
     }
 }
 
-void cpp_feature_test() {
+void draw_line(VectorInt2 start_point, VectorInt2 end_point, TGAImage &image, TGAColor color) {
+    draw_line(start_point.x, start_point.y, end_point.x, end_point.y, image, color);
 }
 
-int main(int argc, char** argv) {
-    cpp_feature_test();
+bool cross_direction_same(VectorInt2 *vertices, VectorInt2 &point) {
+    VectorFloat3 point_a = VectorFloat3(vertices[0].x, vertices[0].y, 0);
+    VectorFloat3 point_b = VectorFloat3(vertices[1].x, vertices[1].y, 0);
+    VectorFloat3 point_c = VectorFloat3(vertices[2].x, vertices[2].y, 0);
+    VectorFloat3 point_p = VectorFloat3(point.x, point.y, 0);
+    
+    VectorFloat3 vector_ab = point_b - point_a;
+    VectorFloat3 vector_ap = point_p - point_a;
+    
+    VectorFloat3 vector_bc = point_c - point_b;
+    VectorFloat3 vector_bp = point_p - point_b;
+    
+    VectorFloat3 vector_ca = point_a - point_c;
+    VectorFloat3 vector_cp = point_p - point_c;
+    
+    float ap_cross = vector_ap.cross_product(vector_ab).z;
+    float bp_cross = vector_bp.cross_product(vector_bc).z;
+    float cp_cross = vector_cp.cross_product(vector_ca).z;
+    
+    return (ap_cross > 0 && bp_cross > 0 && cp_cross > 0) || (ap_cross < 0 && bp_cross < 0 && cp_cross < 0);
+}
 
-    if (argc == 2) {
-        model = new ObjectModel(argv[1]);
-    } else {
-        model = new ObjectModel("cpprenderer/resources/african_head.obj");
+void draw_triangle_line(VectorInt2 v0, VectorInt2 v1, VectorInt2 v2, TGAImage &image, TGAColor stroke_color) {
+    draw_line(v0, v1, image, stroke_color);
+    draw_line(v1, v2, image, stroke_color);
+    draw_line(v2, v0, image, stroke_color);
+}
+
+void draw_triangle_fill(VectorInt2 v0, VectorInt2 v1, VectorInt2 v2, TGAImage &image, TGAColor fill_color) {
+    int upper_x = std::max(std::max(v0.x, v1.x), v2.x);
+    int upper_y = std::max(std::max(v0.y, v1.y), v2.y);
+    int lower_x = std::min(std::min(v0.x, v1.x), v2.x);
+    int lower_y = std::min(std::min(v0.y, v1.y), v2.y);
+    
+    VectorInt2 vector_p = VectorInt2();
+    for (vector_p.x = lower_x; vector_p.x < upper_x; vector_p.x++) {
+        for (vector_p.y = lower_y; vector_p.y < upper_y; vector_p.y++) {
+            VectorInt2 triangle_vertices[3] = { v0, v1, v2 };
+            if (cross_direction_same(triangle_vertices, vector_p)) {
+                image.set(vector_p.x, vector_p.y, fill_color);
+            }
+        }
     }
+}
+
+void draw_vertices_of_an_object(const char *file_path) {
+    model = new ObjectModel(file_path);
     TGAImage image(canvas_width, canvas_height, TGAImage::ColorFormat::RGB);
-    TGAColor white_color(255, 255, 255, 255);
 //    draw_line(10, 10, 90, 20, image, white_color);
 //    draw_line(10, 10, 20, 90, image, white_color);
     for (int face_index = 0; face_index < model->faces_count(); face_index++) {
@@ -93,5 +142,48 @@ int main(int argc, char** argv) {
     }
     image.flip_vertically();
     image.write_tga_file("test.tga", false);
+}
+
+void lesson1_final(int argc, char** argv) {
+    const char *file_path;
+    if (argc == 2) {
+        file_path = argv[1];
+    } else {
+        file_path = "cpprenderer/resources/african_head.obj";
+    }
+    draw_vertices_of_an_object(file_path);
+}
+
+/*
+ Reference:
+ https://en.wikipedia.org/wiki/Barycentric_coordinate_system
+ https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
+*/
+void lesson2_final(int argc, char** argv) {
+    TGAImage image(canvas_width, canvas_height, TGAImage::ColorFormat::RGB);
+    
+    VectorInt2 v0[3] = { VectorInt2(10, 70), VectorInt2(50, 160), VectorInt2(70, 80) };
+    VectorInt2 v1[3] = { VectorInt2(180, 50), VectorInt2(150, 1), VectorInt2(70, 180) };
+    VectorInt2 v2[3] = { VectorInt2(180, 150), VectorInt2(120, 160), VectorInt2(130, 180) };
+    
+//    draw_triangle_line(v0[0], v0[1], v0[2], image, red_color);
+//    draw_triangle_line(v1[0], v1[1], v1[2], image, white_color);
+//    draw_triangle_line(v2[0], v2[1], v2[2], image, green_color);
+    
+    draw_triangle_fill(v0[0], v0[1], v0[2], image, red_color);
+    draw_triangle_fill(v1[0], v1[1], v1[2], image, white_color);
+    draw_triangle_fill(v2[0], v2[1], v2[2], image, green_color);
+    
+    image.flip_vertically();
+    image.write_tga_file("test.tga", false);
+}
+
+void cpp_feature_test() {
+}
+
+int main(int argc, char** argv) {
+    cpp_feature_test();
+//    lesson1_final(argc, argv);
+    lesson2_final(argc, argv);
     return 0;
 }
