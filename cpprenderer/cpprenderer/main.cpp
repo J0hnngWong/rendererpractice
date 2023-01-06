@@ -25,8 +25,8 @@ TGAColor blue_color(0, 0, 255, 255);
 //const int canvas_height = 800;
 
 // Lesson 2
-const int canvas_width = 200;
-const int canvas_height = 200;
+const int canvas_width = 800;
+const int canvas_height = 800;
 
 // Reference: https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 // points: (x - x0)/(y - y0) = (x1 - x0)/(y1 - y0)
@@ -166,13 +166,23 @@ void lesson2_final(int argc, char** argv) {
     VectorInt2 v1[3] = { VectorInt2(180, 50), VectorInt2(150, 1), VectorInt2(70, 180) };
     VectorInt2 v2[3] = { VectorInt2(180, 150), VectorInt2(120, 160), VectorInt2(130, 180) };
     
-//    draw_triangle_line(v0[0], v0[1], v0[2], image, red_color);
-//    draw_triangle_line(v1[0], v1[1], v1[2], image, white_color);
-//    draw_triangle_line(v2[0], v2[1], v2[2], image, green_color);
+//    draw_triangle_fill(v0[0], v0[1], v0[2], image, red_color);
+//    draw_triangle_fill(v1[0], v1[1], v1[2], image, white_color);
+//    draw_triangle_fill(v2[0], v2[1], v2[2], image, green_color);
     
-    draw_triangle_fill(v0[0], v0[1], v0[2], image, red_color);
-    draw_triangle_fill(v1[0], v1[1], v1[2], image, white_color);
-    draw_triangle_fill(v2[0], v2[1], v2[2], image, green_color);
+    ObjectModel *model = new ObjectModel("cpprenderer/resources/african_head.obj");
+    
+    for (int face_index = 0; face_index < model->faces_count(); face_index++) {
+        std::vector<int> face_vertices_list = model->face(face_index);
+        VectorInt2 screen_vertex[3];
+        for (int vertex_list_index = 0; vertex_list_index < 3; vertex_list_index++) {
+            int vertex_line_index = face_vertices_list[vertex_list_index];
+            VectorFloat3 vertex = model->vertex(vertex_line_index);
+            screen_vertex[vertex_list_index] = VectorInt2((vertex.x + 1) * canvas_width / 2, (vertex.y + 1) * canvas_height / 2);
+        }
+        TGAColor fill_color(rand() % 255, rand() % 255, rand() % 255, 255);
+        draw_triangle_fill(screen_vertex[0], screen_vertex[1], screen_vertex[2], image, fill_color);
+    }
     
     image.flip_vertically();
     image.write_tga_file("test.tga", false);
