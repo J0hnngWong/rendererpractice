@@ -12,9 +12,9 @@ func goRender() {
 //    let image = TGAImage.load(filePath: filePath)
 //    print(image)
     let color = TGARGBColor(r: 255, g: 255, b: 255, a: 255)
-    let image = TGAImage(width: 100, height: 100, colorFormat: .rgba)
+    let image = TGAImage(width: 100, height: 100, colorFormat: .rgb)
     image.set(x: 10, y: 10, color: color)
-    image.write(filePath: "/Users/john/Project/Personal/swiftrenderer/swiftrenderer/resources/output/test.tga")
+    image.write(filePath: "file:///Users/john/Project/Personal/swiftrenderer/swiftrenderer/resources/output/test.tga", runLengthEncode: false)
 }
 
 goRender()
